@@ -11,7 +11,6 @@ public class TextFile
         file.Close();
         return str;
     }
-    
     public static void Export(string path, string str)
     {
         var file = new StreamWriter(path, false, Encoding.UTF8);

@@ -13,4 +13,19 @@ public class RegexTextEdit
         }
         return str;
     }
+    public static List<string> Info (string str, string [] badWords)
+    {
+        List <string> info = new List<string>();
+        foreach (var w in badWords)
+        {
+            string pattern = @"(\w*)" + w + @"(\w*)";
+            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+            MatchCollection matches = regex.Matches(str);
+            foreach (Match match in matches)
+            {
+                info.Add(match.Value.ToString());
+            }
+        }
+        return info;
+    }
 }
