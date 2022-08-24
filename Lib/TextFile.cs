@@ -2,13 +2,22 @@
 
 namespace Censor01;
 
-public class TextFile
+public abstract class TextFile
 {
     public static string Import(string path)
     {
-        var file = new StreamReader(path);
-        var str = file.ReadToEnd();
-        file.Close();
+        string str = null;
+        try
+        {
+            using var file = new StreamReader(path);
+            if (file == null) throw new ArgumentNullException(nameof(file));
+            str = file.ReadToEnd();
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine("The file could not be read:");
+            Console.WriteLine(e.Message);
+        }
         return str;
     }
     public static void Export(string path, string str)

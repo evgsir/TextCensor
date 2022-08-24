@@ -3,23 +3,21 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 
-public class JsonStringArr
+public abstract class JsonStringArr
 {
-    static JsonSerializerOptions _options = new JsonSerializerOptions()
+    static readonly JsonSerializerOptions Options = new JsonSerializerOptions()
     {
         AllowTrailingCommas = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         Encoder = JavaScriptEncoder.Create(UnicodeRanges.All), 
         WriteIndented = true
     };
-    
     public static void Export(string path, string[] words)
     {
         var file = new FileStream(path , FileMode.OpenOrCreate, FileAccess.Write);
-        JsonSerializer.SerializeAsync(file, words, _options);
+        JsonSerializer.SerializeAsync(file, words, Options);
         file.Close();
     }
-
     public static string[] Import(string path)
     {
         using var file = new FileStream(path, FileMode.Open, FileAccess.Read);

@@ -1,8 +1,9 @@
 ﻿using Censor01;
 
+Console.WriteLine("Введите путь до текстового файла: ");
 var path = Console.ReadLine();
 
-var info = TextCensor.Edit(path);
+var info = TextCensor.FileText(path);
 
 if (info.Count > 0)
 {
@@ -12,4 +13,10 @@ if (info.Count > 0)
         Console.WriteLine(i);
     }
 }
-else Console.WriteLine("Нежелательных слов не найдено:");
+else Console.WriteLine("Нежелательных слов не найдено");
+
+
+
+
+
+
