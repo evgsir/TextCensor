@@ -2,24 +2,24 @@
 
 public abstract class TextCensor
 {
-    public static (List<string>,string) Text(string str)
+    public static (Information Info, string CensString) Text (string str)
     {
         var info = RegexTextEdit.Info(str, JsonStringArr.Import("badwords.json"));
-        if (info.Count > 0)
+        if (info.findWords.Count > 0)
         {
             str = RegexTextEdit.Replace(str, JsonStringArr.Import("badwords.json"));
         }
-        return (info,str);
+        return (info, str);
     }
-    public static List<string> FileText (string path)
+    public static Information FileText (string path)
     {
         var str = TextFile.Import(path);
         var info = TextCensor.Text(str);
-        if (info.Item1.Count > 0)
+        if (info.Info.findWords.Count > 0)
         {
-            str = info.Item2;   
+            str = info.CensString;   
             TextFile.Export(path, str);
         }
-        return info.Item1;
+        return info.Info;
     }
 }

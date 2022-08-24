@@ -1,6 +1,6 @@
 ﻿namespace Censor01;
 using System.Text.RegularExpressions;
-public class RegexTextEdit
+public abstract class RegexTextEdit
 {
     public static string Replace (string str, string [] badWords)
     {
@@ -13,9 +13,10 @@ public class RegexTextEdit
         }
         return str;
     }
-    public static List<string> Info (string str, string [] badWords)
+    public static Information Info (string str, string [] badWords)
     {
         List <string> info = new List<string>();
+        var countChangeLetters = 0;
         foreach (var w in badWords)
         {
             string pattern = @"(\w*)" + w + @"(\w*)";
@@ -24,8 +25,10 @@ public class RegexTextEdit
             foreach (Match match in matches)
             {
                 info.Add(match.Value.ToString());
+                countChangeLetters += w.Length;
             }
         }
-        return info;
+        return new Information(info, countChangeLetters);
     }
 }
+
