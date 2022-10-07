@@ -10,7 +10,6 @@ public abstract class TextFile
         try
         {
             using var file = new StreamReader(path);
-            if (file == null) throw new ArgumentNullException(nameof(file));
             str = file.ReadToEnd();
         }
         catch (IOException e)

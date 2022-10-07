@@ -21,7 +21,8 @@ public abstract class JsonStringArr
     public static string[] Import(string path)
     {
         using var file = new FileStream(path, FileMode.Open, FileAccess.Read);
-        var newBadWords = JsonSerializer.DeserializeAsync<string[]>(file).Result;
+        string[]? newBadWords;
+        newBadWords = JsonSerializer.DeserializeAsync<string[]>(file).Result;
         file.Close();
         return newBadWords;
     }

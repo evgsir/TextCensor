@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Censor01", "Censor01\Censor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{04028148-D5C5-4DD8-B39D-E07FC3192D3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{A62A5AE2-447E-4468-95E1-87ED54EBD472}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{04028148-D5C5-4DD8-B39D-E07FC3192D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04028148-D5C5-4DD8-B39D-E07FC3192D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04028148-D5C5-4DD8-B39D-E07FC3192D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62A5AE2-447E-4468-95E1-87ED54EBD472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62A5AE2-447E-4468-95E1-87ED54EBD472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62A5AE2-447E-4468-95E1-87ED54EBD472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62A5AE2-447E-4468-95E1-87ED54EBD472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
