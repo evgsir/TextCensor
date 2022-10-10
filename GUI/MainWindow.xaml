@@ -5,22 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TextCensor" Height="450" Width="350">
     <Window.DataContext>
         <local:ViewModel />
     </Window.DataContext>
-    <StackPanel>
+    <Window.ResizeMode>NoResize</Window.ResizeMode>
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowStyle.xaml"></ResourceDictionary>
+    </Window.Resources>
+  <DockPanel HorizontalAlignment="Center">
+    <Grid
+        Margin="30"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="200" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource Description}"  Grid.Row="0" Grid.Column="0" Text="Путь до файла"></TextBlock>
         <TextBox
+            Grid.Column="0" Grid.Row="1"
             x:Name="PathBox"
             Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
                  ></TextBox>
-        <Button Command = "{Binding CenseFile}"
+        <Button 
+            Style="{StaticResource RoundButton}"
+            Grid.Row = "2" Grid.Column="1" Command = "{Binding CenseFile}"
         >
-            Knopka
+            Cense
         </Button>
-        <Button x:Name="PathFinder" Click="PathFinder_OnClick">Path</Button>
-        <TextBlock Text="{Binding CountWords, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-        <TextBlock Text="{Binding CountLetters, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-        <ListBox ItemsSource="{Binding Words}"></ListBox>
-    </StackPanel>
+        <Button Style="{StaticResource RoundButton}" Grid.Column="1" Grid.Row="1" x:Name="PathFinder" Click="PathFinder_OnClick">Open</Button>
+        <TextBlock Style="{StaticResource Description}" Grid.Row="3" Grid.Column="0" Text="Количество измененных слов:"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Padding="3" Text="{Binding CountWords, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Style="{StaticResource Description}" Grid.Row="4" Grid.Column="0" Text="Количество измененных букв:"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Padding="3" Text="{Binding CountLetters, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Style="{StaticResource Description}" Grid.Row="5" Grid.Column="0" Text="Найденые плохие слова"></TextBlock>
+        <ListBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Words}"></ListBox>
+    </Grid>
+  </DockPanel>
 </Window>
